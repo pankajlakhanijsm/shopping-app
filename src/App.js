@@ -2,7 +2,8 @@ import React from "react";
 import Layout from "./layout.js";
 import Mform from './form.js'
 //import "./stylesheet.css"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Productform extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class Productform extends React.Component {
   formSubmitHandler = (character) => {
     this.setState({ productListItems: [...this.state.productListItems, character] });
   }
+
+  notify = () => toast("Wow so easy!");
 
   /*productAddEvent = (event) => {
     event.preventDefault();
@@ -33,6 +36,8 @@ class Productform extends React.Component {
     const { productListItems } = this.state;
     return (
       <div className="container" id="ProductList" style={{ position: 'relative', width: '100%', boxSizing: 'border-box', textAlign: 'center', background: '#e6994c', padding: '5%' }}>
+        <button onClick={this.notify}>Notify!</button>
+        <ToastContainer />
         <Mform formSubmitHandler={this.formSubmitHandler} />
         <Layout productListItems={productListItems} />
       </div>
